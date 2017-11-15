@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Sprache;
 
 namespace HybridServicesTestFramework.GenericHelpers
 {
@@ -16,7 +15,7 @@ namespace HybridServicesTestFramework.GenericHelpers
         public static async Task<T> ParseResponseMessage<T>(Task<HttpResponseMessage> responseMessage)
         {
             var json = await ReadContent(responseMessage);
-            return Serialize.ParseResponse<T>(json.ToString());
+            return Serialize.ParseResponse<T>(json);
         }
 
     }

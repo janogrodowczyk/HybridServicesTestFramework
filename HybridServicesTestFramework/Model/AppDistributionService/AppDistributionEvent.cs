@@ -11,7 +11,6 @@ namespace HybridServicesTestFramework.Model.AppDistributionService
         public string Topic { get; set; }
         public Guid SourceAppId { get; set; }
         public string TargetStreamId { get; set; }
-
         public override string ToString()
         {
             return string.Join("\n", GetType().GetProperties()

@@ -12,14 +12,12 @@ namespace HybridServicesTestFramework.SystemConstants
         public const string ExportedAppViaSyncToCloudPath = @"D:\GitSource\CloudApiSimulator\";
         public const string CloudHost = "staging.qlikcloud.com";
         public const string CloudBaseUrl = "https://staging.qlikcloud.com/api/v1";
-
-
+        
         public const string ServiceAccountProxy = "sa_proxy";
         public const string ServiceAccountRepository = "sa_repository";
         public const string ServiceAccountScheduler = "sa_scheduler";
         public const string ServiceAccountDirectory = "INTERNAL";
-
-
+        
         //App names for upload
         public const string EmptyApp = "EmptyApp.qvf";
         public const string AppWithSheets = "AppWithSheets.qvf";
@@ -63,6 +61,9 @@ namespace HybridServicesTestFramework.SystemConstants
         public const string HeaderApplicationJsonValue = "application/json";
         public const string FeatureConnectParameter = "feature=ent-connect";
         public const string SetCookieName = "Set-Cookie";
+
+        // Config files
+        public const string HybridHost = "HybridHost";
 
         //Parameter
         public const string XrfkeyQuerystringName = "xrfkey";

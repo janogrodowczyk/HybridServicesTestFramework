@@ -1,10 +1,18 @@
 ﻿using NUnit.Framework;
 using System.Configuration;
+using System.IO;
+using static HybridServicesTestFramework.SystemConstants.SystemConstants;
 
 namespace HybridServicesTestFramework.GenericHelpers
 {
 	public class ConfigurationHelper
 	{
+	    public string GetHybridHost(string path)
+	    {
+	       string hybridHost = GetRow(Path.GetFullPath(path), HybridHost);
+	       return hybridHost.Split(':')[0];
+        }
+
 		public void AddToConfigFile(string path, string key, string value)
 		{
 			var configFile = ConfigurationManager.OpenExeConfiguration(path);

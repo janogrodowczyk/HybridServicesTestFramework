@@ -42,7 +42,7 @@ namespace HybridServicesTestFramework.HybridCredentialsService
 
         public async Task<HttpResponseMessage> AddDeployment(HttpStatusCode expectedStatusCode, Deployment deployment)
         {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, new Uri("deployments"));
+            var requestMessage = new HttpRequestMessage(HttpMethod.Post, new Uri("deployments", UriKind.Relative));
             requestMessage.Content = new StringContent(JsonConvert.SerializeObject(deployment), Encoding.UTF8, "application/json");
             requestMessage.Headers.Add("size", "original");
             var response = await _restClient.SendAsync(requestMessage);
