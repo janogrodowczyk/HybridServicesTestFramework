@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridServicesTestFramework", "HybridServicesTestFramework\HybridServicesTestFramework.csproj", "{14F515CE-C491-42B1-A1ED-3D1205E1979B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14F515CE-C491-42B1-A1ED-3D1205E1979B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14F515CE-C491-42B1-A1ED-3D1205E1979B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14F515CE-C491-42B1-A1ED-3D1205E1979B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14F515CE-C491-42B1-A1ED-3D1205E1979B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D188F2DE-C8E9-4ABA-AC43-1B9369C7AA28}
+	EndGlobalSection
+EndGlobal
