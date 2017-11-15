@@ -68,6 +68,14 @@ namespace HybridServicesTestFramework.SystemConstants
         //Parameter
         public const string XrfkeyQuerystringName = "xrfkey";
 
+		//Cloud
+		public const string AuthenticationUrl = "https://login-dev-us-east-1.dev.qlikcloud.com";
+		public const string ServiceUrl = "https://develop.qlikcloud.com/api/v1";
+	    public const string HawkId = "59aea078d2e75d003cb97b5e";
+	    public const string HawkKey = "eDBmZkEvcXhDdm1DL2hSVkUzOFkydz09";
+	    public const string ClientId = "HVzsWgyJE7OICFQSgoH1h2hjbU7O2W6Y";
+	    public const string ClientSecret = "VbLCgMdxak4d4KuUyfBvp385Io9Ly2KLXP6BhebhBk-eJQJuxBSwqK249oUvTVi0";
+	    public const string ProxyPath = "C:\\Program Files\\Qlik\\Sense\\Proxy\\Proxy.exe";
 
     }
 }
