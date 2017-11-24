@@ -36,46 +36,45 @@ namespace HybridServicesTestFramework.Test
             await _hybridCredentialService.DeleteCloudApiKey(HttpStatusCode.NoContent);
         }
 
-        [Test]
-        public async Task GetAppDistributionSettings()
-        {
-            var keys = _hybridCredentialService.AddCloudApiKey(HttpStatusCode.Created,
-                new CloudApiKey() {Id = HawkId, Key = HawkKey});
-            CloudApiKey cloudApiKey = await Reader.ParseResponseMessage<CloudApiKey>(keys);
+		[Test]
+		public void GetAppDistributionSettings()
+		{
+			var keys = _hybridCredentialService.AddCloudApiKey(HttpStatusCode.Created,
+				new CloudApiKey() { Id = HawkId, Key = HawkKey }).To<CloudApiKey>().Result.Content;
 
 			//Fluent Assertions for easier assertions
-            cloudApiKey.Id.Should().BeEquivalentTo(HawkId);
-            
-            var deployment = _hybridCredentialService.AddDeployment(HttpStatusCode.Created,
-                new Deployment()
-                {
-                    ServiceUrl = ServiceUrl,
-                    AuthenticationUrl = AuthenticationUrl,
-                    ClientId = ClientId,
-                    ClientSecret = ClientSecret,
-                    Type = DeploymentType.QlikCloud,
-                    Name = Guid.NewGuid().ToString(),
-                }).To<Deployment>().Result.Content;
+			keys.Id.Should().BeEquivalentTo(HawkId);
 
-            deployment.Should().NotBeNull();
-            deployment.AuthenticationUrl.Should().BeEquivalentTo(AuthenticationUrl);
-            deployment.ServiceUrl.Should().BeEquivalentTo(ServiceUrl);
-            
-            var appDistributionSetting = _adsHelper.CreateAppDistributionSetting(
-                new AppDistributionSetting()
-                {
-                    SourceAppId = Guid.NewGuid(),
-                    TargetStreamId = Guid.NewGuid().ToString().Replace("-", ""),
-                    DeploymentId = deployment.Id,
-                }, HttpStatusCode.Created).To<AppDistributionSetting>().Result.Content;
-            appDistributionSetting.TargetStreamId.Should().NotContain("-");
+			var deployment = _hybridCredentialService.AddDeployment(HttpStatusCode.Created,
+				new Deployment()
+				{
+					ServiceUrl = ServiceUrl,
+					AuthenticationUrl = AuthenticationUrl,
+					ClientId = ClientId,
+					ClientSecret = ClientSecret,
+					Type = DeploymentType.QlikCloud,
+					Name = Guid.NewGuid().ToString(),
+				}).To<Deployment>().Result.Content;
 
-            var appDistributionSettings = _adsHelper.GetAppDistributionSettings(HttpStatusCode.OK)
-                .To<List<AppDistributionSetting>>().Result.Content;
+			deployment.Should().NotBeNull();
+			deployment.AuthenticationUrl.Should().BeEquivalentTo(AuthenticationUrl);
+			deployment.ServiceUrl.Should().BeEquivalentTo(ServiceUrl);
 
-            appDistributionSettings.Should().Contain(i => i.Id == appDistributionSetting.Id);
-            appDistributionSettings.Should().NotBeEmpty();
-	        
-        }
-    }
+			var appDistributionSetting = _adsHelper.CreateAppDistributionSetting(
+				new AppDistributionSetting()
+				{
+					SourceAppId = Guid.NewGuid(),
+					TargetStreamId = Guid.NewGuid().ToString().Replace("-", ""),
+					DeploymentId = deployment.Id,
+				}, HttpStatusCode.Created).To<AppDistributionSetting>().Result.Content;
+			appDistributionSetting.TargetStreamId.Should().NotContain("-");
+
+			var appDistributionSettings = _adsHelper.GetAppDistributionSettings(HttpStatusCode.OK)
+				.To<List<AppDistributionSetting>>().Result.Content;
+
+			appDistributionSettings.Should().Contain(i => i.Id == appDistributionSetting.Id);
+			appDistributionSettings.Should().NotBeEmpty();
+
+		}
+	}
 }
